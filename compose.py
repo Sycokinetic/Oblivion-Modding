@@ -35,7 +35,7 @@
         To use my script without editing, you must organize your files a particular way.
         It is currently written to work with the following folder structure:
 
-            C:\Games\Oblivion Mods\Maintenance\File Backups\Mesh Files\construction\
+            base_dir\
                 composed\
                 extracted\
                     DLCBattlehornCastle.bsa\
@@ -68,7 +68,7 @@
         in it are ready to be compressed into .bsa format. Optimized files have overwritten
         their respective unoptimized copies.
         
-        If you wish to use different file paths, edit the home_dir, extracted_dir,
+        If you wish to use different file paths, edit the extracted_dir,
         optimized_dir, target_dir, and archiveList variables accordingly.
 
         Note that you must have some equivalent of composed\, extracted\, and optimized\
@@ -134,13 +134,9 @@ def copyOverTree(src_root, dst_root, **args):
                             shutil.copy(src_file, dst_file)
 
 # Store key locations
-home_dir = 'C:\\Games\\Oblivion Mods\\Maintenance\\File Backups\\Mesh Files\\construction\\'
 extracted_dir = 'extracted\\'
 optimized_dir = 'optimized\\'
 target_dir = 'composed\\'
-
-bsaDirs = os.listdir(extracted_dir)
-target = os.path.join(home_dir, target_dir)
 
 # Store locations to ignore and accept when overwriting
 ignoreString = '*_far.nif'
@@ -167,7 +163,7 @@ acceptList = ['meshes\\architecture',
               'meshes\\rocks',
               'meshes\\trees']
 
-ignoreList = ['clutter\\magesguild'] #ignores subdirectories of acceptList. directories not in acceptList are already ignored.
+ignoreList = ['clutter\\magesguild']     #ignores subdirectories of acceptList. directories not in acceptList are already ignored.
 
 # Copy original meshes to target_dir. Delete previously existing directory.
 copyCleanTree(extracted_dir, target_dir)
