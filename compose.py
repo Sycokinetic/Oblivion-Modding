@@ -6,7 +6,7 @@
     Purpose and Behavior:
         This script is a personal one that composes optimized and unoptimized
         .bsa subfiles for future compression into a .bsa archive. It does this
-        by first copying the unoptomized files into a target directory. Then
+        by first copying the unoptimized files into a target directory. Then
         it overwrites specific files with optimized copies.
 
         Note that files ending in _far.nif are ignored because these particular
@@ -57,7 +57,7 @@
 
         Note that items ending in "\" are folders, not files.
 
-        extracted\ contains all unoptimized files. They have been extracted direction from
+        extracted\ contains all unoptimized files. They have been extracted directly from
         their respective .bsa files.
 
         optimized\ contains all PyFFI-optimized files. I myself just lump the entire .bsa's
@@ -146,6 +146,7 @@ archiveList = ['DLCBattlehornCastle.bsa\\',
                'DLCOrrery.bsa\\',
                'DLCShiveringIsles - Meshes.bsa\\',
                'DLCThievesDen.bsa\\',
+               'DLCVileLair.bsa\\',
                'Knights.bsa\\',
                'Oblivion - Meshes.bsa\\']
 
@@ -161,7 +162,8 @@ acceptList = ['meshes\\architecture',
               'meshes\\orrery',
               'meshes\\plants',
               'meshes\\rocks',
-              'meshes\\trees']
+              'meshes\\trees',
+              'meshes\\vilelair']
 
 ignoreList = ['clutter\\magesguild']     #ignores subdirectories of acceptList. directories not in acceptList are already ignored.
 
@@ -172,5 +174,4 @@ copyCleanTree(extracted_dir, target_dir)
 for archive in archiveList:
     target = os.path.join(target_dir, archive)
     archive = os.path.join(optimized_dir, archive)
-    copyOverTree(archive, target, acceptDirs=acceptList, ignoreDirs=ignoreList, ignoreFiles=ignorePatternList)
-
+    copyOverTree(archive, target, acceptDirs=acceptList, ignoreDirs=ignoreList)#, ignoreFiles=ignorePatternList)
