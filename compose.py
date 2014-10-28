@@ -167,6 +167,8 @@ acceptList = ['meshes\\architecture',
 
 ignoreList = ['clutter\\magesguild']     #ignores subdirectories of acceptList. directories not in acceptList are already ignored.
 
+# Comment
+
 # Copy original meshes to target_dir. Delete previously existing directory.
 copyCleanTree(extracted_dir, target_dir)
 
